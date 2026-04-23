@@ -111,6 +111,20 @@ section[id] { scroll-margin-top: 80px; }
 /* Mobile menu */
 .mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
 .mobile-menu.open { max-height: 400px; }
+
+/* Form styles */
+.form-input {
+  @apply w-full px-4 py-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-white/40 transition-all font-medium text-sm;
+}
+.form-input::placeholder {
+  color: rgba(255,255,255,0.4);
+}
+.form-input:focus::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+.form-submit {
+  @apply w-full sm:w-auto px-8 py-4 bg-white text-primary font-extrabold rounded-xl hover:bg-slate-100 transition-all shadow-xl whitespace-nowrap cursor-pointer hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98];
+}
 </style>
 </head>
 
@@ -1742,7 +1756,7 @@ Contactar Ventas
 </div>
 </section>
 
-<!-- ==================== CTA FINAL ==================== -->
+<!-- ==================== CTA FINAL - FORMSUBMIT.CO FORM ==================== -->
 <section class="py-20 lg:py-28" id="demo">
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="cta-gradient rounded-3xl p-10 lg:p-16 text-center text-white relative overflow-hidden fade-in">
@@ -1758,22 +1772,43 @@ Empieza a gestionar tu hotel como un profesional
 30 d&iacute;as gratis, sin tarjeta de cr&eacute;dito. Configura tu hotel en 15 minutos y empieza a operar hoy.
 </p>
 
-<form class="max-w-lg mx-auto flex flex-col sm:flex-row gap-3" onsubmit="event.preventDefault(); alert('Gracias! Te contactaremos pronto.');">
-<input
-type="email"
-required
-placeholder="tu@hotel.com"
-class="flex-1 px-5 py-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-white/30 font-medium"
-/>
-<button
-type="submit"
-class="px-8 py-4 bg-white text-primary font-extrabold rounded-xl hover:bg-slate-100 transition-all shadow-xl whitespace-nowrap"
->
-Solicitar Demo
-</button>
+<!-- FormSubmit.co Form -->
+<form action="https://formsubmit.co/fleremiasflemin20@gmail.com" method="POST" class="max-w-lg mx-auto space-y-4">
+  
+  <input type="text" name="Nombre" placeholder="Tu Nombre completo" required class="form-input" />
+  
+  <input type="email" name="Email" placeholder="Correo Electrónico" required class="form-input" />
+  
+  <input type="text" name="Hotel" placeholder="Nombre de tu Hotel" required class="form-input" />
+  
+  <input type="tel" name="Telefono" placeholder="WhatsApp / Teléfono" required class="form-input" />
+  
+  <!-- Hidden fields -->
+  <input type="hidden" name="_subject" value="Nueva Solicitud de Demo - Fleremahias">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="https://fleremiasflemin20-maker.github.io/fleremiasPMS/">
+  
+  <button type="submit" class="form-submit mt-2">
+    Solicitar Demo Gratis
+  </button>
+  
 </form>
 
 <p class="text-white/40 text-xs mt-4">Sin compromiso. Sin tarjeta de cr&eacute;dito. Setup en 15 minutos.</p>
+
+<!-- Trust badges -->
+<div class="flex items-center justify-center gap-4 mt-6 text-white/50 text-[10px]">
+  <span class="flex items-center gap-1">
+    <span class="material-symbols-outlined text-[12px]">shield</span> Datos seguros
+  </span>
+  <span class="flex items-center gap-1">
+    <span class="material-symbols-outlined text-[12px]">check_circle</span> SRI Compatible
+  </span>
+  <span class="flex items-center gap-1">
+    <span class="material-symbols-outlined text-[12px]">support_agent</span> Soporte 24/7
+  </span>
+</div>
+
 </div>
 </div>
 </div>
@@ -1877,6 +1912,20 @@ document.querySelectorAll('#mobileMenu a').forEach(link => {
 link.addEventListener('click', () => {
 document.getElementById('mobileMenu').classList.remove('open');
 });
+});
+
+// FormSubmit.co: Add success message handling (optional)
+document.querySelector('form[action*="formsubmit.co"]')?.addEventListener('submit', function(e) {
+  const btn = this.querySelector('button[type="submit"]');
+  const originalText = btn.innerHTML;
+  btn.innerHTML = '<span class="material-symbols-outlined text-primary text-lg animate-spin">sync</span> Enviando...';
+  btn.disabled = true;
+  
+  // Reset after 3 seconds (FormSubmit handles the actual submission)
+  setTimeout(() => {
+    btn.innerHTML = originalText;
+    btn.disabled = false;
+  }, 3000);
 });
 </script>
 </body>
