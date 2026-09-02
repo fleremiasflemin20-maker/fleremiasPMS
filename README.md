@@ -14,6 +14,10 @@
 
 <br/>
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/939fcda6-fa2b-4d5f-bb77-c2b4b34a01a8" width="90%" alt="Vista previa de Fleremahias PMS" />
+</p>
+
 ## Sobre el proyecto
 
 Landing page comercial de **Fleremahias PMS**, un sistema de gestión hotelera pensado específicamente para el mercado ecuatoriano: facturación electrónica integrada con el SRI, funcionamiento en modo offline y gestión completa del hotel desde cualquier dispositivo.
